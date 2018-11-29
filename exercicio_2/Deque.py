@@ -47,7 +47,7 @@ class Deque:
         texto += "#"*50+"\n"
         return texto
 
-    
+
 
 
 
