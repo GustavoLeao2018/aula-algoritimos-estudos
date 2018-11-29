@@ -61,9 +61,21 @@ def step_impl(context):
     for item in lista_acrescentar:
         context.deque.push_back(item)
 
+@when(u'insiro, no início da estrutura, os valores [4, 3, 2, 1]')
+def step_impl(context):
+    lista_acrescentar = [ 4, 3, 2, 1 ]
+    for item in lista_acrescentar:
+        context.deque.push_front(item)
 
 
+@given(u'este deque tem os elementos, inseridos no final, [1, 3, 5, 7]')
+def step_impl(context):
+    def step_impl(context):
+        lista_acrescentar = [1, 3, 5, 7]
+        for item in lista_acrescentar:
+            context.deque.push_front(item)
 
 
-
-
+@when(u'insiro, no início da estrutura, o valor {valor}')
+def step_impl(context, valor):
+    context.deque.push_front(valor)
