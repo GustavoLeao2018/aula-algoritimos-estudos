@@ -39,7 +39,6 @@ def step_impl(context):
 # TODO: Este está com erro
 @then(u'o elemento na frente da estrutura tem o valor {valor}')
 def step_impl(context, valor):
-    print(context.deque.peek_front().dado,valor)
     assert context.deque.peek_front().dado is valor
 
 
@@ -51,7 +50,6 @@ def step_impl(context):
 
 @then(u'o elemento no final da estrutura tem o valor {valor}')
 def step_impl(context, valor):
-    print(context.deque.peek_back().dado)
     assert context.deque.peek_back().dado is valor
 
 
@@ -68,9 +66,9 @@ def step_impl(context):
         context.deque.push_front(item)
 
 
-@given(u'este deque tem os elementos, inseridos no final, [1, 3, 5, 7]')
-def step_impl(context):
-    lista_acrescentar = [1, 3, 5, 7]
+@given(u'este deque tem os elementos, inseridos no final, {lista}')
+def step_impl(context, lista):
+    lista_acrescentar = list(lista)
     for item in lista_acrescentar:
         context.deque.push_front(item)
 
@@ -78,3 +76,10 @@ def step_impl(context):
 @when(u'insiro, no início da estrutura, o valor {valor}')
 def step_impl(context, valor):
     context.deque.push_front(valor)
+
+
+
+
+@when(u'apago, no final da estrutura')
+def step_impl(context):
+    context.deque.pop_back()
